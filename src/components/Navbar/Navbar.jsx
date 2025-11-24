@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X, Sparkles, Home, User, Briefcase, Code, Mail } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -24,11 +24,11 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: 'Home', id: 'home' },
-    { name: 'About', id: 'about' },
-    { name: 'Projects', id: 'projects' },
-    { name: 'Skills', id: 'skills' },
-    { name: 'Contact', id: 'contact' },
+    { name: 'Home', id: 'home', icon: Home },
+    { name: 'About', id: 'about', icon: User },
+    { name: 'Projects', id: 'projects', icon: Briefcase },
+    { name: 'Skills', id: 'skills', icon: Code },
+    { name: 'Contact', id: 'contact', icon: Mail },
   ];
 
   return (
@@ -78,15 +78,32 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className={styles.mobileMenu}
           >
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className={styles.mobileLink}
-              >
-                {link.name}
-              </button>
-            ))}
+            {navLinks.map((link, index) => {
+              const IconComponent = link.icon;
+              return (
+                <motion.button
+                  key={link.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  onClick={() => scrollToSection(link.id)}
+                  className={styles.mobileLink}
+                >
+                  <span className={styles.linkContent}>
+                    <IconComponent size={20} className={styles.linkIcon} />
+                    <span>{link.name}</span>
+                  </span>
+                  <motion.span
+                    className={styles.arrow}
+                    initial={{ x: -8, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.05 + 0.1 }}
+                  >
+                    →
+                  </motion.span>
+                </motion.button>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>

@@ -30,11 +30,20 @@
   border-radius: 9999px;
 }
 
-.grid {
+/* -------------------------
+   Responsive Grid
+-------------------------- */
+.content {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  max-width: 64rem;
-  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
 }
 
 .subHeading {
@@ -61,6 +70,7 @@
   align-items: center;
   gap: 1rem;
   color: var(--text-color);
+  text-decoration: none;
 }
 
 .iconBox {
@@ -92,8 +102,6 @@
 }
 
 .label {
-  display: block;
-  font-size: 0.875rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-secondary);
@@ -136,21 +144,43 @@
   transition: opacity 0.3s ease;
   box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.25);
 }
-.content{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
 
 .submitBtn:hover {
   opacity: 0.9;
 }
 
-@media (min-width: 768px) {
+/* -------------------------
+   Typography Responsiveness
+-------------------------- */
+@media (max-width: 768px) {
   .heading {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+  .subHeading {
+    font-size: 1.25rem;
+  }
+
+  .formCard {
+    padding: 1.5rem;
+  }
+}
+
+/* Extra-small screens */
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.75rem;
+  }
+
+  .content {
+    gap: 2rem;
+  }
+
+  .iconBox {
+    padding: 0.6rem;
+  }
+
+  .infoItem span {
+    font-size: 0.95rem;
   }
 }
