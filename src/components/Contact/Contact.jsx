@@ -10,6 +10,7 @@ const Contact = () => {
     message: ''
   });
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,6 +19,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
+    setErrorMessage(null);
 
     try {
       const response = await fetch('/api/send-email', {
@@ -28,16 +30,22 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
+      const respBody = await response.json().catch(() => null);
+
       if (response.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setStatus('idle'), 3000);
       } else {
-        throw new Error('Failed to send email');
+        const msg = respBody && respBody.message ? respBody.message : 'Failed to send email';
+        console.error('Send email failed:', respBody);
+        setErrorMessage(msg);
+        throw new Error(msg);
       }
     } catch (error) {
       console.error('Error:', error);
       setStatus('error');
+      if (!errorMessage) setErrorMessage(error && error.message ? error.message : 'Unknown error');
       setTimeout(() => setStatus('idle'), 3000);
     }
   };
@@ -180,6 +188,9 @@ const Contact = () => {
                   </>
                 )}
               </button>
+              {status === 'error' && errorMessage && (
+                <p className={styles.errorText} aria-live="polite">{errorMessage}</p>
+              )}
             </form>
           </motion.div>
         </div>
