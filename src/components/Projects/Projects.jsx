@@ -35,7 +35,7 @@ const Projects = () => {
         'A fully responsive real estate platform built with a mobile-first design. Includes authentication, protected routes, real-time Firebase sync, smooth UI animations, and toast notifications.',
       tech: ['React', 'Firebase', 'Vite', 'Tailwind CSS'],
       image: realEstateImg,
-      span: styles.span2
+      span: styles.span1
     },
     {
       id: 4,
@@ -44,7 +44,7 @@ const Projects = () => {
         'A modern business website featuring dynamic, API-driven content. Built for speed and responsiveness using React and Vite, with a Node.js and Express.js backend for data handling.',
       tech: ['React', 'Vite', 'Tailwind CSS', 'Node.js', 'Express.js'],
       image: webGrowImg,
-      span: styles.span1
+      span: styles.span2
     },
     {
       id: 5,
@@ -53,7 +53,7 @@ const Projects = () => {
         'A complete job portal application featuring job posting, advanced search filters, and a secure authentication system. Designed with a clean and responsive user interface.',
       tech: ['React.js', 'Node.js', 'HTML', 'CSS', 'JavaScript'],
       image: jobPortalImg,
-      span: styles.span1
+      span: styles.span2
     }
   ];
 

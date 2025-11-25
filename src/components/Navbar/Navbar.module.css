@@ -101,6 +101,28 @@
   width: 100%;
 }
 
+.resumeBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  background-size: 200% auto;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.resumeBtn:hover {
+  background-position: right center;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
 .menuToggle {
   display: block;
   color: #7c3aed;
@@ -186,6 +208,16 @@
   background: rgba(124, 58, 237, 0.2);
   border-color: rgba(124, 58, 237, 0.4);
   transform: translateX(4px);
+}
+
+.mobileResumeBtn {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(6, 182, 212, 0.2));
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  margin-top: 0.5rem;
+}
+
+.mobileResumeBtn:active {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(6, 182, 212, 0.3));
 }
 
 .linkContent {

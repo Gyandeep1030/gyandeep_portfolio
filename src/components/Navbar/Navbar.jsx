@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles, Home, User, Briefcase, Code, Mail } from 'lucide-react';
+import { Menu, X, Sparkles, Home, User, Briefcase, Code, Mail, Download } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -58,6 +58,16 @@ const Navbar = () => {
               </button>
             </li>
           ))}
+          <li>
+            <a 
+              href="/resume.pdf" 
+              download="Gyandeep_Resume.pdf"
+              className={styles.resumeBtn}
+            >
+              <span>Resume</span>
+              <Download size={16} />
+            </a>
+          </li>
         </ul>
 
         {/* Mobile Menu Toggle */}
@@ -104,6 +114,27 @@ const Navbar = () => {
                 </motion.button>
               );
             })}
+            <motion.a
+              href="/resume.pdf"
+              download="Gyandeep_Resume.pdf"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: navLinks.length * 0.05 }}
+              className={`${styles.mobileLink} ${styles.mobileResumeBtn}`}
+            >
+              <span className={styles.linkContent}>
+                <Download size={20} className={styles.linkIcon} />
+                <span>Resume</span>
+              </span>
+              <motion.span
+                className={styles.arrow}
+                initial={{ x: -8, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: navLinks.length * 0.05 + 0.1 }}
+              >
+                →
+              </motion.span>
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>
