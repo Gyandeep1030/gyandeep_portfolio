@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles, Home, User, Briefcase, Code, Mail, Download } from 'lucide-react';
+import { Menu, X, Laptop, Home, User, Briefcase, Code, Mail, Download, Sparkles } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -25,9 +25,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', id: 'home', icon: Home },
-    { name: 'About', id: 'about', icon: User },
-    { name: 'Projects', id: 'projects', icon: Briefcase },
+    { name: 'Case Studies', id: 'projects', icon: Briefcase },
     { name: 'Skills', id: 'skills', icon: Code },
+    { name: 'About', id: 'about', icon: User },
     { name: 'Contact', id: 'contact', icon: Mail },
   ];
 
@@ -42,8 +42,11 @@ const Navbar = () => {
           className={styles.logo}
           onClick={() => scrollToSection('home')}
         >
-          <Sparkles className={styles.logoIcon} size={24} />
-          <span>GYANDEEP</span>
+          <Laptop className={styles.logoIcon} size={22} />
+          <div className={styles.logoTextGroup}>
+            <span className={styles.brandName}>GYANDEEP</span>
+            <span className={styles.brandBadge}>Mobile • Web • TV</span>
+          </div>
         </div>
 
         {/* Desktop Menu */}
@@ -58,14 +61,26 @@ const Navbar = () => {
               </button>
             </li>
           ))}
-          <li>
+          <li className={styles.actionButtons}>
+            <a 
+              href="/Gyandeep Kumar — Mobile • Web • TV Portfolio.pdf" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.portfolioPdfBtn}
+              title="View Complete Mobile • Web • TV Portfolio PDF"
+            >
+              <span>Portfolio PDF</span>
+            </a>
             <a 
               href="/resume.pdf" 
               download="Gyandeep_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.resumeBtn}
+              title="Download Resume"
             >
               <span>Resume</span>
-              <Download size={16} />
+              <Download size={15} />
             </a>
           </li>
         </ul>
@@ -115,11 +130,35 @@ const Navbar = () => {
               );
             })}
             <motion.a
-              href="/resume.pdf"
-              download="Gyandeep_Resume.pdf"
+              href="/Gyandeep Kumar — Mobile • Web • TV Portfolio.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: navLinks.length * 0.05 }}
+              className={`${styles.mobileLink} ${styles.mobilePortfolioBtn}`}
+            >
+              <span className={styles.linkContent}>
+                <Sparkles size={20} className={styles.linkIcon} />
+                <span>Portfolio PDF</span>
+              </span>
+              <motion.span
+                className={styles.arrow}
+                initial={{ x: -8, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: navLinks.length * 0.05 + 0.1 }}
+              >
+                →
+              </motion.span>
+            </motion.a>
+            <motion.a
+              href="/resume.pdf"
+              download="Gyandeep_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: (navLinks.length + 1) * 0.05 }}
               className={`${styles.mobileLink} ${styles.mobileResumeBtn}`}
             >
               <span className={styles.linkContent}>
@@ -130,7 +169,7 @@ const Navbar = () => {
                 className={styles.arrow}
                 initial={{ x: -8, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: navLinks.length * 0.05 + 0.1 }}
+                transition={{ delay: (navLinks.length + 1) * 0.05 + 0.1 }}
               >
                 →
               </motion.span>
