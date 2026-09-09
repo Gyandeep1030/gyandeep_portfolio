@@ -81,7 +81,20 @@ const Contact = () => {
                 <div className={styles.iconBox}>
                   <Mail size={20} />
                 </div>
-                <span>Gyandeep1030@gmail.com</span>
+                <div>
+                  <span className={styles.infoLabel}>Email</span>
+                  <span className={styles.infoVal}>Gyandeep1030@gmail.com</span>
+                </div>
+              </a>
+
+              <a href="tel:+918076390223" className={styles.infoItem}>
+                <div className={styles.iconBox}>
+                  <Phone size={20} />
+                </div>
+                <div>
+                  <span className={styles.infoLabel}>Phone</span>
+                  <span className={styles.infoVal}>+91 8076390223</span>
+                </div>
               </a>
               
               <a 
@@ -93,7 +106,10 @@ const Contact = () => {
                 <div className={styles.iconBox}>
                   <Linkedin size={20} />
                 </div>
-                <span>LinkedIn Profile</span>
+                <div>
+                  <span className={styles.infoLabel}>LinkedIn</span>
+                  <span className={styles.infoVal}>linkedin.com/in/gyandeep1030</span>
+                </div>
               </a>
 
               <a 
@@ -105,14 +121,20 @@ const Contact = () => {
                 <div className={styles.iconBox}>
                   <Github size={20} />
                 </div>
-                <span>GitHub Profile</span>
+                <div>
+                  <span className={styles.infoLabel}>GitHub</span>
+                  <span className={styles.infoVal}>github.com/Gyandeep1030</span>
+                </div>
               </a>
 
               <div className={styles.infoItem}>
                 <div className={styles.iconBox}>
                   <MapPin size={20} />
                 </div>
-                <span>New Delhi, India</span>
+                <div>
+                  <span className={styles.infoLabel}>Location</span>
+                  <span className={styles.infoVal}>New Delhi, India</span>
+                </div>
               </div>
             </div>
           </motion.div>
